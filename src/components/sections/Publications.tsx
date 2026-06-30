@@ -1,48 +1,80 @@
 import { motion } from "framer-motion";
 import { ExternalLink, GraduationCap } from "lucide-react";
 
+const SCHOLAR = "https://scholar.google.com/citations?user=XGstDVoAAAAJ";
+
 const publications = [
   {
-    title: "Plant Disease Detection Using GLCM Feature Extractor and Voting Classification Approach",
-    venue: "Materials Today: Proceedings, Vol. 58, pp. 407–415",
-    year: "2022",
-    citations: "55",
-    link: "https://scholar.google.com/citations?user=XGstDVoAAAAJ"
+    title: "One Year Later… The Harms Persist, But So Do We!",
+    venue: "arXiv preprint",
+    year: "2026",
+    link: SCHOLAR
   },
   {
     title: "Retrieval-Enhanced Mental Health Assessment: Capturing Self-State Dynamics from Social Media Using In-Context Learning",
     venue: "10th Workshop on Computational Linguistics and Clinical Psychology (CLPsych) @ ACL",
     year: "2025",
-    citations: "3",
-    link: "https://aclanthology.org/people/a/anson-antony/"
-  },
-  {
-    title: "Docr-Captcha: OCR Classifier Based Deep Learning Technique for Captcha Recognition",
-    venue: "19th OITS International Conference on Information Technology (OCIT)",
-    year: "2021",
-    citations: "6",
-    link: "https://scholar.google.com/citations?user=XGstDVoAAAAJ"
-  },
-  {
-    title: "Smart IoT Based Indoor Farming Analysis and Monitoring Using Fuzzy Logic Expert Systems",
-    venue: "5th International Conference on I-SMAC (IoT in Social, Mobile, Analytics and Cloud)",
-    year: "2021",
-    citations: "6",
-    link: "https://scholar.google.com/citations?user=XGstDVoAAAAJ"
-  },
-  {
-    title: "Roux-lette at 'Discharge Me!': Reducing EHR Chart Burden with a Simple, Scalable, Clinician-Driven AI Approach",
-    venue: "23rd Workshop on Biomedical Natural Language Processing (BioNLP) @ ACL",
-    year: "2024",
-    citations: "New",
     link: "https://aclanthology.org/people/a/anson-antony/"
   },
   {
     title: "Lightweight LLM Adaptation for Medical Summarisation: Roux-lette at PerAnsSumm Shared Task",
     venue: "2nd Workshop on Patient-Oriented Language Processing (CL4Health) @ NAACL",
     year: "2025",
-    citations: "New",
     link: "https://aclanthology.org/people/a/anson-antony/"
+  },
+  {
+    title: "Roux-lette at 'Discharge Me!': Reducing EHR Chart Burden with a Simple, Scalable, Clinician-Driven AI Approach",
+    venue: "23rd Workshop on Biomedical Natural Language Processing (BioNLP) @ ACL",
+    year: "2024",
+    link: "https://aclanthology.org/people/a/anson-antony/"
+  },
+  {
+    title: "Plant Disease Detection Using GLCM Feature Extractor and Voting Classification Approach",
+    venue: "Materials Today: Proceedings, Vol. 58, pp. 407–415",
+    year: "2022",
+    link: SCHOLAR
+  },
+  {
+    title: "Novel Approach to Phishing Detection Using ML and Visual Similarity",
+    venue: "Machine Learning and Autonomous Systems (Springer)",
+    year: "2022",
+    link: SCHOLAR
+  },
+  {
+    title: "A Review on Efficient EEG Pattern Recognition Using Machine Learning and Deep Learning Methods",
+    venue: "AIP Conference Proceedings, Vol. 2555",
+    year: "2022",
+    link: SCHOLAR
+  },
+  {
+    title: "Stroke Prediction System Using Machine Learning Algorithm",
+    venue: "Mobile Computing and Sustainable Informatics (Springer)",
+    year: "2022",
+    link: SCHOLAR
+  },
+  {
+    title: "Docr-Captcha: OCR Classifier Based Deep Learning Technique for Captcha Recognition",
+    venue: "19th OITS International Conference on Information Technology (OCIT)",
+    year: "2021",
+    link: SCHOLAR
+  },
+  {
+    title: "Smart IoT Based Indoor Farming Analysis and Monitoring Using Fuzzy Logic Expert Systems",
+    venue: "5th International Conference on I-SMAC (IoT in Social, Mobile, Analytics and Cloud)",
+    year: "2021",
+    link: SCHOLAR
+  },
+  {
+    title: "Design, Simulation and Assessment of EEG-Based Expert System for Classification and Detection of Epileptic Seizure",
+    venue: "5th International Conference on I-SMAC (IoT in Social, Mobile, Analytics and Cloud)",
+    year: "2021",
+    link: SCHOLAR
+  },
+  {
+    title: "Brain Image Visualization",
+    venue: "International Conference on Image Processing and Capsule Networks (ICIPCV)",
+    year: "2020",
+    link: SCHOLAR
   }
 ];
 
@@ -85,13 +117,8 @@ export function Publications() {
           className="mb-12 p-6 rounded-2xl bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20 flex flex-wrap items-center justify-around gap-6 text-center"
         >
           <div>
-            <div className="text-3xl md:text-4xl font-display font-bold text-white mb-1">7+</div>
+            <div className="text-3xl md:text-4xl font-display font-bold text-white mb-1">12</div>
             <div className="text-sm font-medium text-primary uppercase tracking-wider">Publications</div>
-          </div>
-          <div className="hidden md:block w-px h-12 bg-white/10" />
-          <div>
-            <div className="text-3xl md:text-4xl font-display font-bold text-white mb-1">77</div>
-            <div className="text-sm font-medium text-accent uppercase tracking-wider">Citations</div>
           </div>
           <div className="hidden md:block w-px h-12 bg-white/10" />
           <div>
@@ -129,18 +156,7 @@ export function Publications() {
                 </p>
               </div>
 
-              {/* citations + arrow */}
-              <div className="flex items-center gap-3 shrink-0">
-                {pub.citations !== "New" ? (
-                  <span className="hidden sm:flex flex-col items-center w-12 text-center">
-                    <span className="text-sm font-semibold text-white tabular-nums">{pub.citations}</span>
-                    <span className="text-[10px] text-muted-foreground uppercase tracking-wide">cites</span>
-                  </span>
-                ) : (
-                  <span className="hidden sm:inline text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 font-medium">New</span>
-                )}
-                <ExternalLink className="w-4 h-4 text-white/30 group-hover:text-primary transition-colors" />
-              </div>
+              <ExternalLink className="w-4 h-4 shrink-0 text-white/30 group-hover:text-primary transition-colors" />
             </motion.a>
           ))}
         </div>
