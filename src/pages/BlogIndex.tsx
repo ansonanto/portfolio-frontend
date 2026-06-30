@@ -1,7 +1,7 @@
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { ArrowLeft, BookOpen, Calendar } from "lucide-react";
-import { useGetPosts } from "@workspace/api-client-react";
+import { useGetPosts } from "@/api-client";
 
 function formatDate(value?: string | null): string {
   if (!value) return "";

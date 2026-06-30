@@ -6,7 +6,7 @@ import {
   useDeletePost,
   getAdminListPostsQueryKey,
   getGetPostsQueryKey,
-} from "@workspace/api-client-react";
+} from "@/api-client";
 import { setToken } from "@/lib/adminAuth";
 import { Button } from "@/components/ui/button";
 

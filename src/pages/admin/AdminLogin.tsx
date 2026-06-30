@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useLocation } from "wouter";
 import { Lock } from "lucide-react";
-import { useLogin } from "@workspace/api-client-react";
+import { useLogin } from "@/api-client";
 import { setToken } from "@/lib/adminAuth";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";

@@ -2,7 +2,6 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import path from "path";
-import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 
 const rawPort = process.env.PORT;
 
@@ -28,35 +27,15 @@ if (!basePath) {
 
 export default defineConfig({
   base: basePath,
-  plugins: [
-    react(),
-    tailwindcss(),
-    runtimeErrorOverlay(),
-    ...(process.env.NODE_ENV !== "production" &&
-    process.env.REPL_ID !== undefined
-      ? [
-          await import("@replit/vite-plugin-cartographer").then((m) =>
-            m.cartographer({
-              root: path.resolve(import.meta.dirname, ".."),
-            }),
-          ),
-          await import("@replit/vite-plugin-dev-banner").then((m) =>
-            m.devBanner(),
-          ),
-        ]
-      : []),
-  ],
+  plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "src"),
-      "@assets": path.resolve(import.meta.dirname, "..", "attached_assets"),
     },
     dedupe: ["react", "react-dom"],
   },
   root: path.resolve(import.meta.dirname),
   build: {
-    // Output to `dist` (Vite's conventional dir) so Vercel auto-detects it
-    // when Root Directory is set to `frontend`.
     outDir: path.resolve(import.meta.dirname, "dist"),
     emptyOutDir: true,
   },
@@ -65,11 +44,8 @@ export default defineConfig({
     strictPort: true,
     host: "0.0.0.0",
     allowedHosts: true,
-    fs: {
-      strict: true,
-    },
-    // In local dev the API server runs on a separate port; forward /api to it.
-    // On Replit the artifacts router handles /api, so this proxy is dev-only.
+    fs: { strict: true },
+    // Local dev: forward /api to the backend on 8080.
     proxy: {
       "/api": {
         target: process.env.API_PROXY_TARGET ?? "http://localhost:8080",

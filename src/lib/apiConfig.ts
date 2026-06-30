@@ -1,4 +1,4 @@
-import { setBaseUrl } from "@workspace/api-client-react";
+import { setBaseUrl } from "@/api-client";
 
 /**
  * Point the API client at the backend.

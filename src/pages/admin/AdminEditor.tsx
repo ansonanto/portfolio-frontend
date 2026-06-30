@@ -15,7 +15,7 @@ import {
   getGetPostsQueryKey,
   type PostInput,
   type PostLink,
-} from "@workspace/api-client-react";
+} from "@/api-client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";

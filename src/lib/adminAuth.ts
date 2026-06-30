@@ -1,4 +1,4 @@
-import { setAuthTokenGetter } from "@workspace/api-client-react";
+import { setAuthTokenGetter } from "@/api-client";
 
 const TOKEN_KEY = "admin_token";
 

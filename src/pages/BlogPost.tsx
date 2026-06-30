@@ -4,7 +4,7 @@ import { ArrowLeft, Calendar, ExternalLink } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeSanitize from "rehype-sanitize";
-import { useGetPostBySlug } from "@workspace/api-client-react";
+import { useGetPostBySlug } from "@/api-client";
 
 function formatDate(value?: string | null): string {
   if (!value) return "";
