@@ -55,7 +55,9 @@ export default defineConfig({
   },
   root: path.resolve(import.meta.dirname),
   build: {
-    outDir: path.resolve(import.meta.dirname, "dist/public"),
+    // Output to `dist` (Vite's conventional dir) so Vercel auto-detects it
+    // when Root Directory is set to `frontend`.
+    outDir: path.resolve(import.meta.dirname, "dist"),
     emptyOutDir: true,
   },
   server: {
