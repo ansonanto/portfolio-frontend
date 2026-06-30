@@ -65,7 +65,7 @@ export function Education() {
 
                 <div className="flex-1 min-w-0">
                   <span className="text-xs font-mono text-muted-foreground tracking-wide">
-                    {edu.period} · {edu.location}
+                    {edu.location}
                   </span>
 
                   <h3 className="text-lg font-display font-semibold text-white mt-1 leading-snug">
