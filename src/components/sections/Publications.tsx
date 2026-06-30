@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { BookOpen, ExternalLink, GraduationCap } from "lucide-react";
+import { ExternalLink, GraduationCap } from "lucide-react";
 
 const publications = [
   {
@@ -100,46 +100,46 @@ export function Publications() {
           </div>
         </motion.div>
 
-        <div className="space-y-6">
+        <div className="rounded-2xl border border-white/5 bg-card/20 divide-y divide-white/5 overflow-hidden">
           {publications.map((pub, index) => (
             <motion.a
               key={index}
               href={pub.link}
               target="_blank"
               rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group block p-6 md:p-8 rounded-2xl bg-card/30 border border-white/5 hover:border-primary/30 hover:bg-card/60 transition-all"
+              transition={{ duration: 0.4, delay: index * 0.06 }}
+              className="group flex items-center gap-4 px-5 py-4 md:px-6 hover:bg-card/60 transition-colors"
               data-testid={`link-publication-${index}`}
             >
-              <div className="flex flex-col md:flex-row gap-4 md:items-start justify-between">
-                <div className="space-y-3">
-                  <h3 className="text-xl md:text-2xl font-display font-semibold text-white group-hover:text-primary transition-colors">
-                    {pub.title}
-                  </h3>
-                  <div className="flex flex-wrap items-center gap-3 text-sm">
-                    <span className="flex items-center gap-1.5 text-muted-foreground">
-                      <BookOpen className="w-4 h-4" />
-                      {pub.venue}
-                    </span>
-                    <span className="w-1.5 h-1.5 rounded-full bg-white/20" />
-                    <span className="flex items-center gap-1.5 text-muted-foreground">
-                      <GraduationCap className="w-4 h-4" />
-                      {pub.year}
-                    </span>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4 shrink-0">
-                  <div className="text-right">
-                    <div className="text-lg font-semibold text-white">{pub.citations}</div>
-                    <div className="text-xs text-muted-foreground">Citations</div>
-                  </div>
-                  <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                    <ExternalLink className="w-4 h-4 text-white/50 group-hover:text-primary transition-colors" />
-                  </div>
-                </div>
+              {/* year badge */}
+              <span className="hidden sm:flex shrink-0 w-12 flex-col items-center justify-center text-center">
+                <span className="text-sm font-semibold text-primary tabular-nums">{pub.year}</span>
+              </span>
+
+              <div className="flex-1 min-w-0">
+                <h3 className="text-sm md:text-base font-medium text-white leading-snug group-hover:text-primary transition-colors line-clamp-2">
+                  {pub.title}
+                </h3>
+                <p className="mt-1 text-xs text-muted-foreground truncate">
+                  <span className="sm:hidden text-primary font-medium">{pub.year} · </span>
+                  {pub.venue}
+                </p>
+              </div>
+
+              {/* citations + arrow */}
+              <div className="flex items-center gap-3 shrink-0">
+                {pub.citations !== "New" ? (
+                  <span className="hidden sm:flex flex-col items-center w-12 text-center">
+                    <span className="text-sm font-semibold text-white tabular-nums">{pub.citations}</span>
+                    <span className="text-[10px] text-muted-foreground uppercase tracking-wide">cites</span>
+                  </span>
+                ) : (
+                  <span className="hidden sm:inline text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 font-medium">New</span>
+                )}
+                <ExternalLink className="w-4 h-4 text-white/30 group-hover:text-primary transition-colors" />
               </div>
             </motion.a>
           ))}
