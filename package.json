@@ -1,0 +1,23 @@
+{
+  "name": "portfolio-frontend",
+  "version": "0.0.0",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "npm run dev -w @workspace/portfolio",
+    "build": "npm run build -w @workspace/portfolio",
+    "serve": "npm run serve -w @workspace/portfolio",
+    "typecheck": "npm run typecheck:libs && npm run typecheck --workspaces --if-present",
+    "typecheck:libs": "tsc --build"
+  },
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "devDependencies": {
+    "typescript": "~5.9.3"
+  },
+  "workspaces": [
+    "frontend",
+    "lib/*"
+  ]
+}
